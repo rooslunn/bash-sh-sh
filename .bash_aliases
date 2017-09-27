@@ -1,6 +1,7 @@
 # PHP
 alias t="vendor/bin/phpunit"
 alias lara="php artisan"
+alias serve="php -S localhost:8000"
 
 # Services
 function ss () {
