@@ -19,5 +19,5 @@ function apti () {
     sudo apt install "$1"
 }
 function aptu () {
-    sudo apt update && sudo apt upgrade --yes
+    sudo apt update && sudo apt upgrade --yes && sudo apt autoremove
 }
