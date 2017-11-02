@@ -1,7 +1,8 @@
 # PHP
-alias t="vendor/bin/phpunit"
+alias t="vendor/bin/phpunit || phpunit"
 alias lara="php artisan"
 alias serve="php -S localhost:8000"
+alias sy="php bin/console"
 
 # Services
 function ss () {
@@ -12,6 +13,9 @@ function sl () {
 }
 function sdis () {
     sudo service "$1" stop && sudo systemctl disable "$1"
+}
+function sen () {
+    sudo systemctl enable "$1" && sudo service "$1" start
 }
 
 # APT
