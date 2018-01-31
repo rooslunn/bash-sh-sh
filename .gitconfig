@@ -11,3 +11,9 @@
 	standup = log --since '1 day ago' --oneline --author rooslunn@gmail.com
 	graph = log --graph --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'
 	br = branch
+    mrgnff = merge --no-ff
+[user]
+    name = Ruslan Kladko
+    email = rkladko@gmail.com
+[core]
+	editor = vim

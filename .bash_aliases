@@ -1,8 +1,8 @@
 # PHP
 alias t="vendor/bin/phpunit || phpunit"
-alias lara="php artisan"
-alias serve="php -S localhost:8000"
-alias sy="php bin/console"
+alias l="php artisan"
+alias lsrv="php artisan serve"
+alias lfre="php artisan migrate:fresh --seed"
 
 # Services
 function ss () {
