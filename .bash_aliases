@@ -1,8 +1,13 @@
-# PHP
-alias t="vendor/bin/phpunit || phpunit"
-alias l="php artisan"
-alias lsrv="php artisan serve"
-alias lfre="php artisan migrate:fresh --seed"
+# Laravel
+alias t="vendor/bin/phpunit"
+alias la="php artisan"
+alias lafre="la cache:clear && la config:clear && composer dumpautoload && la migrate:fresh --seed"
+alias lapro="composer install --optimize-autoloader && la config:cache && la route:cache && npm run prod"
+alias ladeploy="git pull && lafre && lapro"
+
+# SSH
+alias umalpha="sshpass -f /usr/local/etc/umalpha ssh umalpha@umalpha.badvps.com"
+alias umdev3="sshpass -f /usr/local/etc/umdev3 ssh umdev3@umdev3.badvps.com"
 
 # Services
 function ss () {
