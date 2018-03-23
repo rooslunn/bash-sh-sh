@@ -1,16 +1,20 @@
-# Laravel
+# Laravel & PHP $ nginx
 alias t="vendor/bin/phpunit"
 alias la="php artisan"
 alias lacre="composer create-project --prefer-dist laravel/laravel $1"
 alias lafre="la cache:clear && la config:clear && composer dumpautoload && la migrate:fresh --seed"
 alias lapro="composer install --optimize-autoloader && la config:cache && la route:cache && npm run prod"
 alias ladeploy="git pull && lafre && lapro"
+alias pser="php -S localhost:8887"
+alias nglog="tail -f /var/log/nginx/error.log"
+
+export ANDROID_HOME="$HOME/Android/Sdk"
 
 # Access
 #alias umalpha="sshpass -f /usr/local/etc/umalpha ssh umalpha@umalpha.badvps.com"
 #alias umdev3="sshpass -f /usr/local/etc/umdev3 ssh umdev3@umdev3.badvps.com"
-alias huti="sshpass -p 'NazGeq024!' ssh kladko@136.243.91.135"
-alias muti="mysql --host=136.243.91.135 --user=kladko --password=NazGeq024="
+#alias huti="sshpass -p 'NazGeq024!' ssh kladko@136.243.91.135"
+#alias muti="mysql --host=136.243.91.135 --user=kladko --password=NazGeq024="
 
 # Commands
 function mkcd () {
