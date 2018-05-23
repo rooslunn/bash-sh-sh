@@ -1,12 +1,21 @@
-# Laravel & PHP $ nginx
+# Testing
 alias t="vendor/bin/phpunit"
+alias c="./vendor/bin/codecept"
+alias cc="c run"
+
+# Composer
+alias cpz="composer"
+alias cpzd="cpz dumpautoload"
+
+# Laravel
 alias la="php artisan"
 alias lacre="composer create-project --prefer-dist laravel/laravel $1"
 alias lafre="la cache:clear && la config:clear && composer dumpautoload && la migrate:fresh --seed"
 alias lapro="composer install --optimize-autoloader && la config:cache && la route:cache && npm run prod"
 alias ladeploy="git pull && lafre && lapro"
-alias pser="php -S localhost:8887"
+alias pbis="php -S localhost:8887 -t public/"
 alias nglog="tail -f /var/log/nginx/error.log"
+alias vlog="tail -f $HOME/.valet/Log/nginx-error.log"
 
 export ANDROID_HOME="$HOME/Android/Sdk"
 

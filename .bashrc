@@ -61,7 +61,8 @@ parse_git_branch() {
 }
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(parse_git_branch)\[\033[00m\] $ '
+#    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(parse_git_branch)\[\033[00m\] $ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\[\033[01;34m\]\w\[\033[00m\]$(parse_git_branch)\[\033[00m\] $ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -122,7 +123,7 @@ fi
 
 # Below is mine
 
-PATH="$HOME/bin:$HOME/.composer/vendor/bin:$PATH"
+PATH="$HOME/.yarn/bin:$HOME/bin:$HOME/.composer/vendor/bin:$PATH"
 
 mkcd () {
 	mkdir -p "$1" && cd "$1"
@@ -133,3 +134,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 alias ssh-demo-cloud="ssh rkladko@systemt.datascientistworkbench.com"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/russ/.sdkman"
+[[ -s "/home/russ/.sdkman/bin/sdkman-init.sh" ]] && source "/home/russ/.sdkman/bin/sdkman-init.sh"
