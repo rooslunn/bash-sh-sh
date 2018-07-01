@@ -4,8 +4,8 @@ alias c="./vendor/bin/codecept"
 alias cc="c run"
 
 # Composer
-alias cpz="composer"
-alias cpzd="cpz dumpautoload"
+alias comp="composer"
+alias compd="comp dumpautoload"
 
 # Laravel
 alias la="php artisan"
@@ -17,7 +17,25 @@ alias pbis="php -S localhost:8887 -t public/"
 alias nglog="tail -f /var/log/nginx/error.log"
 alias vlog="tail -f $HOME/.valet/Log/nginx-error.log"
 
-export ANDROID_HOME="$HOME/Android/Sdk"
+# Misc
+alias g="git"
+alias h="history"
+
+# Pililka
+alias a="php tools/alacrity.php"
+alias pilpull="(cd ~/projects/pilulka/core-api/ && g pull) && (cd ~/projects/pilulka/core-api-client/ && g pull) && (cd ~/projects/pilulka/pilulka-eshop/ && g pull && comp update pilulka/core-api-client)"
+
+# docker-compose
+alias dup="docker-compose up -d"
+alias dstop="docker-compose stop"
+alias dps="docker-compose ps"
+alias dsh="docker-compose exec php bash"
+alias dstats="docker stats"
+alias dprune="docker system prune -a"
+
+# PhpStorm
+export PHP_IDE_CONFIG="serverName=eshop"
+#export ANDROID_HOME="$HOME/Android/Sdk"
 
 # Access
 #alias umalpha="sshpass -f /usr/local/etc/umalpha ssh umalpha@umalpha.badvps.com"
