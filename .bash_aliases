@@ -17,13 +17,16 @@ alias pbis="php -S localhost:8887 -t public/"
 alias nglog="tail -f /var/log/nginx/error.log"
 alias vlog="tail -f $HOME/.valet/Log/nginx-error.log"
 
+# Symfony
+alias sy="php bin/console"
+
 # Misc
 alias g="git"
 alias h="history"
 
-# Pililka
-alias a="php tools/alacrity.php"
-alias pilpull="(cd ~/projects/pilulka/core-api/ && g pull) && (cd ~/projects/pilulka/core-api-client/ && g pull) && (cd ~/projects/pilulka/pilulka-eshop/ && g pull && comp update pilulka/core-api-client)"
+# Node
+alias yd="yarn run dev"
+
 
 # docker-compose
 alias dup="docker-compose up -d"
