@@ -13,7 +13,6 @@ alias lacre="composer create-project --prefer-dist laravel/laravel $1"
 alias lafre="la cache:clear && la config:clear && composer dumpautoload && la migrate:fresh --seed"
 alias lapro="composer install --optimize-autoloader && la config:cache && la route:cache && npm run prod"
 alias ladeploy="git pull && lafre && lapro"
-alias pbis="php -S localhost:8887 -t public/"
 alias nglog="tail -f /var/log/nginx/error.log"
 alias vlog="tail -f $HOME/.valet/Log/nginx-error.log"
 
@@ -23,21 +22,20 @@ alias sy="php bin/console"
 # Misc
 alias g="git"
 alias h="history"
+alias d="docker"
+alias dcomp="docker-compose"
 
-# Node
+alias wake="echo $'\a'"
+alias cp='cp -r'
+alias scp='scp -r'
+alias rm='rm -r'
+alias mkdir='mkdir -p'
+
+# Node/Yarn
 alias yd="yarn run dev"
 
-
-# docker-compose
-alias dup="docker-compose up -d"
-alias dstop="docker-compose stop"
-alias dps="docker-compose ps"
-alias dsh="docker-compose exec php bash"
-alias dstats="docker stats"
-alias dprune="docker system prune -a"
-
 # PhpStorm
-export PHP_IDE_CONFIG="serverName=eshop"
+#export PHP_IDE_CONFIG="serverName=eshop"
 #export ANDROID_HOME="$HOME/Android/Sdk"
 
 # Access
