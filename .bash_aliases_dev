@@ -4,14 +4,18 @@ alias do-scp="scp -i $HOME/.ssh/id_rsa_digitalocean $1 $2"
 alias do-sftp="sftp -i $HOME/.ssh/id_rsa_digitalocean root@178.128.67.14"
 alias do-dock="ssh -i $HOME/.ssh/id_rsa_digitalocean root@142.93.239.151"
 
+# AWS
+alias ssh-aws-178="ssh -i $HOME/.ssh/aws.pem ubuntu@18.185.117.178"
+alias ssh-aws-215="ssh -i $HOME/.ssh/aws.pem ubuntu@35.157.74.215"
+
 #laraspace
-LARASPACE_CONTAINER_NAME="laraspace"
-LARASPACE_IMAGE_NAME="laraspace"
-alias space-rund="docker run -d -p 8000:80 -v $PWD/src:/var/www --name $LARASPACE_IMAGE_NAME $LARASPACE_CONTAINER_NAME"
-alias space-run="docker run -p 8000:80 -v $PWD/src:/var/www --name $LARASPACE_IMAGE_NAME $LARASPACE_CONTAINER_NAME"
-alias space-start="docker start $LARASPACE_IMAGE_NAME"
-alias space-stop="docker stop $LARASPACE_IMAGE_NAME"
-alias space-ssh="docker exec -it $LARASPACE_IMAGE_NAME /bin/sh"
+#LARASPACE_CONTAINER_NAME="laraspace"
+#LARASPACE_IMAGE_NAME="laraspace"
+#alias space-rund="docker run -d -p 8000:80 -v $PWD/src:/var/www --name $LARASPACE_IMAGE_NAME $LARASPACE_CONTAINER_NAME"
+#alias space-run="docker run -p 8000:80 -v $PWD/src:/var/www --name $LARASPACE_IMAGE_NAME $LARASPACE_CONTAINER_NAME"
+#alias space-start="docker start $LARASPACE_IMAGE_NAME"
+#alias space-stop="docker stop $LARASPACE_IMAGE_NAME"
+#alias space-ssh="docker exec -it $LARASPACE_IMAGE_NAME /bin/sh"
 
 #Docker
 alias dclr="docker container prune -f"
