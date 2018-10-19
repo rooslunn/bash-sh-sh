@@ -6,7 +6,7 @@ alias do-dock="ssh -i $HOME/.ssh/id_rsa_digitalocean root@142.93.239.151"
 
 # AWS
 alias ssh-aws-178="ssh -i $HOME/.ssh/aws.pem ubuntu@18.185.117.178"
-alias ssh-aws-215="ssh -i $HOME/.ssh/aws.pem ubuntu@35.157.74.215"
+#alias ssh-aws-215="ssh -i $HOME/.ssh/aws.pem ubuntu@35.157.74.215"
 
 #laraspace
 #LARASPACE_CONTAINER_NAME="laraspace"
@@ -17,7 +17,7 @@ alias ssh-aws-215="ssh -i $HOME/.ssh/aws.pem ubuntu@35.157.74.215"
 #alias space-stop="docker stop $LARASPACE_IMAGE_NAME"
 #alias space-ssh="docker exec -it $LARASPACE_IMAGE_NAME /bin/sh"
 
-#Docker
+# Docker
 alias dclr="docker container prune -f"
 alias dcls="docker container ls"
 alias dimgs="docker images"
@@ -25,6 +25,15 @@ alias drmi="docker rmi"
 #alias dps="docker ps"
 alias dex="docker exec -it"
 alias dpsa="docker ps -a"
+# Docker Clean-Up
+alias dcleanv="docker volume ls -qf dangling=true | xargs -r docker volume rm"
+alias dcleann="docker network rm $(docker network ls | grep "bridge" | awk '/ / { print $1 }')"
+alias dcleani="docker rmi $(docker images --filter "dangling=true" -q --no-trunc)"
+alias dcleanc="docker rm $(docker ps -qa --no-trunc --filter "status=exited")"
+alias dclean="(echo '1. Volumes...'; dcleanv) && (echo '2. Networks...'; dcleann) && (echo '3. Images...'; dcleani) && (echo '4. Containers...'; dcleanc)"
+# Docker XDebug network
+#docker inspect {container_id} | grep Network
+#docker network inspect {network from prev cmd} | grep Gateway
 
 # docker-compose
 alias dup="docker-compose up --remove-orphans -d"
