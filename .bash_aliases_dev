@@ -30,7 +30,7 @@ alias dcleanv="docker volume ls -qf dangling=true | xargs -r docker volume rm"
 alias dcleann="docker network rm $(docker network ls | grep "bridge" | awk '/ / { print $1 }')"
 alias dcleani="docker rmi $(docker images --filter "dangling=true" -q --no-trunc)"
 alias dcleanc="docker rm $(docker ps -qa --no-trunc --filter "status=exited")"
-alias dclean="(echo '1. Volumes...'; dcleanv) && (echo '2. Networks...'; dcleann) && (echo '3. Images...'; dcleani) && (echo '4. Containers...'; dcleanc)"
+alias dclean="(echo '1. Volumes...'; dcleanv) && (echo '2. Containers...'; dcleanc)"
 # Docker XDebug network
 #docker inspect {container_id} | grep Network
 #docker network inspect {network from prev cmd} | grep Gateway

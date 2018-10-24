@@ -75,7 +75,7 @@ function apti () {
 }
 
 function aptu () {
-    sudo apt update && sudo apt upgrade --yes && sudo apt autoremove
+    sudo apt update && sudo apt upgrade --yes && sudo apt autoremove --yes && snap refresh
 }
 
 function aptrm () {
