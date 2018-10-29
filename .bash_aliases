@@ -24,12 +24,17 @@ alias g="git"
 alias h="history"
 alias d="docker"
 alias dcomp="docker-compose"
+alias cdd="cd $HOME/dev"
+alias cdp="cd $HOME/dev/payop"
 
 alias wake="echo $'\a'"
-alias cp='cp -r'
-alias scp='scp -r'
-alias rm='rm -r'
-alias mkdir='mkdir -p'
+alias cp="cp -r"
+alias scp="scp -r"
+alias rm="rm -r"
+alias mkdir="mkdir -p"
+alias reb="sudo shutdown -r now"
+
+alias cpkey="command cat ~/.ssh/id_rsa.pub | pbcopy"
 
 # Node/Yarn
 alias yd="yarn run dev"
@@ -38,15 +43,18 @@ alias yd="yarn run dev"
 #export PHP_IDE_CONFIG="serverName=eshop"
 #export ANDROID_HOME="$HOME/Android/Sdk"
 
-# Access
-#alias umalpha="sshpass -f /usr/local/etc/umalpha ssh umalpha@umalpha.badvps.com"
-#alias umdev3="sshpass -f /usr/local/etc/umdev3 ssh umdev3@umdev3.badvps.com"
-#alias huti="sshpass -p 'NazGeq024!' ssh kladko@136.243.91.135"
-#alias muti="mysql --host=136.243.91.135 --user=kladko --password=NazGeq024="
-
 # Commands
+function portu () {
+	(echo "Upgrading ports tree..." ; \
+	sudo port selfupdate) && \
+	(echo "Upgrading outdated ports..." ; \
+	sudo port upgrade outdated) && \
+	(echo "Removing inactive ports..." ; \
+	sudo port uninstall inactive)
+}
+
 function mkcd () {
-    mkdir "$1" && cd "$1"
+    mkdir "$@" && cd "$@"
 }
 
 # Services
