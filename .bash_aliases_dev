@@ -43,6 +43,25 @@ alias dsh="docker-compose exec $1 sh"
 alias dstats="docker stats"
 alias dprune="docker system prune -a"
 
+# Paydo
+alias paydo-netcfg="echo '==> Configuring network...' && sudo ifconfig lo0 alias 10.254.254.254 netmask 255.255.255.255"
+alias ng-up="echo '==> Restarting NGINX...' && sudo nginx -s stop && sudo nginx"
+
+alias payop-web-up="echo '==> Starting PAYOP-WEB...' && cd $HOME/dev/payop/payop-web && dup"
+alias payop-web-down="echo '==> Stopping PAYOP-WEB...' && cd $HOME/dev/payop/payop-web && dstop"
+
+alias payop-engine-up="echo '==> Starting ENGINE...' && cd $HOME/dev/payop/engine && dup"
+alias payop-engine-down="echo '==> Stopping ENGINE...' && cd $HOME/dev/payop/engine && dstop"
+
+alias payop-conn-blue-up="echo '==> Starting BLUESNAP connector' && cd $HOME/dev/payop/connectors/bluesnap && dup"
+alias payop-conn-blue-down="echo '==> Stopping BLUESNAP connector' && cd $HOME/dev/payop/connectors/bluesnap && dstop"
+
+alias payop-conn-up="payop-conn-blue-up"
+alias payop-conn-down="payop-conn-blue-down"
+
+alias paydo-up="paydo-netcfg && payop-engine-up && payop-conn-up && payop-web-up && ng-up && dcls"
+alias paydo-down="payop-web-down && payop-engine-down && payop-conn-down && dclr && dcls"
+
 # Pililka
 #alias a="php tools/alacrity.php"
 #alias pilpull="(cd ~/projects/pilulka/core-api/ && g pull) && (cd ~/projects/pilulka/core-api-client/ && g pull) && (cd ~/projects/pilulka/pilulka-eshop/ && g pull && comp update pilulka/core-api-client)"
