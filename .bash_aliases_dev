@@ -1,11 +1,11 @@
 # Digital Ocean
-alias do-uba="ssh -i $HOME/.ssh/id_rsa_digitalocean root@178.128.67.14"
-alias do-scp="scp -i $HOME/.ssh/id_rsa_digitalocean $1 $2"
-alias do-sftp="sftp -i $HOME/.ssh/id_rsa_digitalocean root@178.128.67.14"
-alias do-dock="ssh -i $HOME/.ssh/id_rsa_digitalocean root@142.93.239.151"
+#alias do-uba="ssh -i $HOME/.ssh/id_rsa_digitalocean root@178.128.67.14"
+#alias do-scp="scp -i $HOME/.ssh/id_rsa_digitalocean $1 $2"
+#alias do-sftp="sftp -i $HOME/.ssh/id_rsa_digitalocean root@178.128.67.14"
+#alias do-dock="ssh -i $HOME/.ssh/id_rsa_digitalocean root@142.93.239.151"
 
 # AWS
-alias ssh-aws-178="ssh -i $HOME/.ssh/aws.pem ubuntu@18.185.117.178"
+#alias ssh-aws-178="ssh -i $HOME/.ssh/aws.pem ubuntu@18.185.117.178"
 #alias ssh-aws-215="ssh -i $HOME/.ssh/aws.pem ubuntu@35.157.74.215"
 
 #laraspace
@@ -23,14 +23,14 @@ alias dcls="docker container ls"
 alias dimgs="docker images"
 alias drmi="docker rmi"
 #alias dps="docker ps"
-alias dex="docker exec -it"
 alias dpsa="docker ps -a"
+
 # Docker Clean-Up
-alias dcleanv="docker volume ls -qf dangling=true | xargs -r docker volume rm"
-alias dcleann="docker network rm $(docker network ls | grep "bridge" | awk '/ / { print $1 }')"
-alias dcleani="docker rmi $(docker images --filter "dangling=true" -q --no-trunc)"
-alias dcleanc="docker rm $(docker ps -qa --no-trunc --filter "status=exited")"
-alias dclean="(echo '1. Volumes...'; dcleanv) && (echo '2. Containers...'; dcleanc)"
+alias dclrv="docker volume ls -qf dangling=true | xargs -r docker volume rm"
+alias dclrn="docker network rm $(docker network ls | grep "bridge" | awk '/ / { print $1 }')"
+alias dclri="docker rmi $(docker images --filter "dangling=true" -q --no-trunc)"
+alias dclrc="docker rm $(docker ps -qa --no-trunc --filter 'status=exited') 2>/dev/null"
+alias dclrall="(echo '==> Images...'; dclri) && (echo '==> Containers...'; dclrc)"
 # Docker XDebug network
 #docker inspect {container_id} | grep Network
 #docker network inspect {network from prev cmd} | grep Gateway
@@ -39,13 +39,14 @@ alias dclean="(echo '1. Volumes...'; dcleanv) && (echo '2. Containers...'; dclea
 alias dup="docker-compose up --remove-orphans -d"
 alias dstop="docker-compose stop"
 alias dps="docker-compose ps"
-alias dsh="docker-compose exec $1 sh"
 alias dstats="docker stats"
 alias dprune="docker system prune -a"
 
 # Paydo
 alias paydo-netcfg="echo '==> Configuring network...' && sudo ifconfig lo0 alias 10.254.254.254 netmask 255.255.255.255"
-alias ng-up="echo '==> Restarting NGINX...' && sudo nginx -s stop && sudo nginx"
+
+alias ng-down="echo '==> Stopping NGINX...' && sudo nginx -s stop 2>/dev/null"
+alias ng-up="echo '==> Starting NGINX...' && sudo nginx"
 
 alias payop-web-up="echo '==> Starting PAYOP-WEB...' && cd $HOME/dev/payop/payop-web && dup"
 alias payop-web-down="echo '==> Stopping PAYOP-WEB...' && cd $HOME/dev/payop/payop-web && dstop"
@@ -55,12 +56,14 @@ alias payop-engine-down="echo '==> Stopping ENGINE...' && cd $HOME/dev/payop/eng
 
 alias payop-conn-blue-up="echo '==> Starting BLUESNAP connector' && cd $HOME/dev/payop/connectors/bluesnap && dup"
 alias payop-conn-blue-down="echo '==> Stopping BLUESNAP connector' && cd $HOME/dev/payop/connectors/bluesnap && dstop"
+alias payop-conn-qiwi-up="echo '==> Starting QIWI connector' && cd $HOME/dev/payop/connectors/qiwi && dup"
+alias payop-conn-qiwi-down="echo '==> Stopping QIWI connector' && cd $HOME/dev/payop/connectors/qiwi && dstop"
 
-alias payop-conn-up="payop-conn-blue-up"
-alias payop-conn-down="payop-conn-blue-down"
+alias payop-conn-up="payop-conn-blue-up && payop-conn-qiwi-up"
+alias payop-conn-down="payop-conn-blue-down && payop-conn-qiwi-down"
 
-alias paydo-up="paydo-netcfg && payop-engine-up && payop-conn-up && payop-web-up && ng-up && dcls"
-alias paydo-down="payop-web-down && payop-engine-down && payop-conn-down && dclr && dcls"
+alias paydo-up="paydo-netcfg && payop-engine-up && payop-conn-up && payop-web-up && dcls;cd"
+alias paydo-down="payop-web-down && payop-engine-down && payop-conn-down && dclr && dcls;cd"
 
 # Pililka
 #alias a="php tools/alacrity.php"
@@ -75,3 +78,8 @@ alias paydo-down="payop-web-down && payop-engine-down && payop-conn-down && dclr
 #alias coc-up="docker start $COCO_IMAGE_NAME"
 #alias coc-down="docker stop $COCO_IMAGE_NAME"
 #alias coc-sh="docker exec -it --user cocorico cocorico /bin/sh"
+
+function dex () {
+    docker-compose exec "$@" bash
+}
+

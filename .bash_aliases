@@ -27,6 +27,10 @@ alias dcomp="docker-compose"
 alias cdd="cd $HOME/dev"
 alias cdp="cd $HOME/dev/payop"
 
+# Bash Tuning
+alias s-ed="vim $HOME/.bash_aliases"
+alias s-up="source $HOME/.bash_profile"
+
 alias wake="echo $'\a'"
 alias cp="cp -r"
 alias scp="scp -r"
@@ -35,6 +39,13 @@ alias mkdir="mkdir -p"
 alias reb="sudo shutdown -r now"
 
 alias cpkey="command cat ~/.ssh/id_rsa.pub | pbcopy"
+
+# Network
+alias h-up="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
+alias ng-up="sudo nginx -s stop && sudo nginx"
+
+# MacPorts
+alias pori="sudo port install $@ -N"
 
 # Node/Yarn
 alias yd="yarn run dev"
@@ -45,12 +56,9 @@ alias yd="yarn run dev"
 
 # Commands
 function portu () {
-	(echo "Upgrading ports tree..." ; \
-	sudo port selfupdate) && \
-	(echo "Upgrading outdated ports..." ; \
-	sudo port upgrade outdated) && \
-	(echo "Removing inactive ports..." ; \
-	sudo port uninstall inactive)
+	(echo "=> Upgrading ports tree..."; sudo port selfupdate) && \
+	(echo "=> Upgrading outdated ports..."; sudo port upgrade outdated) ; \
+	(echo "=> Removing inactive ports..." ; sudo port uninstall inactive)
 }
 
 function mkcd () {
