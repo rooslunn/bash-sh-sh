@@ -17,6 +17,15 @@
 #alias space-stop="docker stop $LARASPACE_IMAGE_NAME"
 #alias space-ssh="docker exec -it $LARASPACE_IMAGE_NAME /bin/sh"
 
+# bash-completion
+if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
+    . /opt/local/etc/profile.d/bash_completion.sh
+fi
+
+if [ -f ~/.git-completion.bash ]; then 
+    . ~/.git-completion.bash 
+fi
+
 # Docker
 alias dclr="docker container prune -f"
 alias dcls="docker container ls"
@@ -46,7 +55,7 @@ alias dprune="docker system prune -a"
 alias paydo-netcfg="echo '==> Configuring network...' && sudo ifconfig lo0 alias 10.254.254.254 netmask 255.255.255.255"
 
 alias ng-down="echo '==> Stopping NGINX...' && sudo nginx -s stop 2>/dev/null"
-alias ng-up="echo '==> Starting NGINX...' && sudo nginx"
+alias ng-up="ng-down && echo '==> Starting NGINX...'; sudo nginx"
 
 alias payop-web-up="echo '==> Starting PAYOP-WEB...' && cd $HOME/dev/payop/payop-web && dup"
 alias payop-web-down="echo '==> Stopping PAYOP-WEB...' && cd $HOME/dev/payop/payop-web && dstop"
@@ -62,7 +71,7 @@ alias payop-conn-qiwi-down="echo '==> Stopping QIWI connector' && cd $HOME/dev/p
 alias payop-conn-up="payop-conn-blue-up && payop-conn-qiwi-up"
 alias payop-conn-down="payop-conn-blue-down && payop-conn-qiwi-down"
 
-alias paydo-up="paydo-netcfg && payop-engine-up && payop-conn-up && payop-web-up && dcls;cd"
+alias paydo-up="paydo-netcfg && payop-engine-up && payop-conn-up && payop-web-up && ng-up && dcls;cd"
 alias paydo-down="payop-web-down && payop-engine-down && payop-conn-down && dclr && dcls;cd"
 
 # Pililka
