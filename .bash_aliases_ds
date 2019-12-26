@@ -1,0 +1,99 @@
+
+alias sos="source $HOME/.profile"
+alias cp="cp -R"
+alias mkdir="mkdir -p"
+alias rm="rm -r"
+alias chmod="chmod -R"
+alias llm="ll | less -iXRS"
+alias soft-update="sudo apt update && sudo apt upgrade -y && snap refresh && sudo apt autoremove -y && reset"
+alias set-74="sudo update-alternatives --config php"
+alias ff="find -O3 -L -name"
+alias f-echo="find . -type f -exec bash -c 'echo "" >> "{}"' \;"
+
+# Disk tools (https://habr.com/ru/post/476414/)
+alias smartctl="sudo smartctl -a $1"
+alias iotop="sudo iotop -obPat"
+alias fatrace="sudo fatrace -f W"
+
+alias cdd="cd $HOME/src/dreamscape"
+alias cds="cd $HOME/src"
+
+alias sysca="sudo systemctl"
+alias sysca-st="sudo systemctl status"
+
+alias g="git"
+alias g-pub="git push -u origin master"
+alias g-lcf="git log -n 1 --pretty=format:'%h'"
+g-ci() { g add . && g ci -m "$@"; }
+g-ci-fix() { g add . && g ci-fix $1; }
+
+alias svn-rm="svn st | grep ^! | awk '{print \" --force $2\"}' | xargs svn rm"
+alias svn-rm-chlist="svn changelist --remove --recursive ."
+alias svn-add="svn status | grep '^?' | sed 's/^.* /svn add /' | bash"
+alias svn-log="svn log -l 7 -v"
+alias svn-up="svn up && svn log -l 7"
+svn-ci() { svn ci -m "$@" && svn-up-log; }
+
+alias c="composer"
+alias c-req="c require"
+alias c-req-dev="c require --dev"
+alias c-dump="c dumpautoload"
+
+alias a="php artisan"
+
+alias t="phpunit"
+
+alias d11-dbg="ssh -R 9000:localhost:9000 ruslan.kladko@web-cluster11.development.uk.ds.network"
+alias d11="sshpass -pzT+B44n%k ssh ruslan.kladko@web-cluster11.development.uk.ds.network"
+alias d11-dpl-article="(g push) && (d11 -t bash -ci deploy-article)"
+alias d11-dpl-sitebeat="(g push) && (d11 -t bash -ci deploy-sitebeat)"
+alias d11-phplog="d11 -t bash -ci php-log-system"
+
+alias d10uk="sshpass -pzT+B44n%k ssh ruslan.kladko@web-cluster10.development.uk.ds.network"
+alias d10au="sshpass -pzT+B44n%k ssh ruslan.kladko@web-cluster10.development.au.ds.network"
+alias sys7au="sshpass -pzT+B44n%k ssh ruslan.kladko@secureapi.com.au"
+
+alias payex-dev="sshpass -pzT+B44n%k ssh ruslan.kladko@payexpress.development.au.syrahost.com"
+#alias payex="sshpass -pyD5E8r4nHLAZ ssh Ruslan.Kladko@payexpress.development.au.syrahost.com"
+
+cluster() {
+    cluster_name="web-cluster"$1".development."$2".ds.network"
+    echo "Connecting to cluster $cluster_name ..."
+    sshpass -pzT+B44n%k ssh "ruslan.kladko@$cluster_name"
+}
+
+mkcd() { mkdir -p "$@" && cd "$@"; }
+mkdatefn() { touch $(date +"%Y_%m_%d_%H_%M_%S_")$@; }
+
+# Docker
+alias d-clr="docker container prune -f"
+alias d-ls="docker container ls"
+alias d-imgs="docker images"
+alias d-rmi="docker rmi"
+alias d-ps="docker ps -a"
+
+# Docker Clean-Up
+alias d-clrv="docker volume ls -qf dangling=true | xargs -r docker volume rm"
+alias d-clrn="docker network rm $(docker network ls | grep "bridge" | awk '/ / { print $1 }')"
+alias d-clri="docker rmi $(docker images --filter "dangling=true" -q --no-trunc)"
+alias d-clrc="docker rm $(docker ps -qa --no-trunc --filter 'status=exited') 2>/dev/null"
+alias d-clrall="(echo '==> Images...'; dclri) && (echo '==> Containers...'; dclrc)"
+# Docker XDebug network
+#docker inspect {container_id} | grep Network
+#docker network inspect {network from prev cmd} | grep Gateway
+
+# docker-compose
+alias dc-up="docker-compose up --remove-orphans -d"
+alias dc-stop="docker-compose stop"
+alias dc-ps="docker-compose ps"
+alias dc-stats="docker stats"
+alias dc-prune="docker system prune -a"
+alias dc-logs="docker-compose logs"
+alias dc-build="docker-compose build"
+
+alias es-test="curl -X GET 'localhost:9200/_cat/nodes?v&pretty'"
+
+# Envars
+export JAVA_HOME=/usr/lib/jvm/jdk-13
+export PATH=$HOME/.composer/vendor/bin:$JAVA_HOME/bin:$PATH
+export SVN_EDITOR=vim
