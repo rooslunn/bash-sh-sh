@@ -12,6 +12,7 @@
     graph = log --graph --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'
     br = branch
     mrgnff = merge --no-ff
+    forget="! /usr/local/bin/git fetch -p && /usr/local/bin/git branch -vv | awk '/: gone]/{print $1}' | xargs /usr/local/bin/git branch -D"
 [user]
     name = Ruslan Kladko
     email = rkladko@gmail.com
