@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='/home/russ/src/torrnado/olarm/asvpweb.minjust.gov.ua'
+let g:netrw_dirhist_8='/home/russ/src/torrnado/altilium/app/src/main'
+let g:netrw_dirhist_7='/home/russ/src/torrnado/altilium/app/src/main/kotlin'
+let g:netrw_dirhist_6='/home/russ/src/torrnado/altilium/app/src/main/kotlin/altilium'
+let g:netrw_dirhist_5='/home/russ/src/torrnado/altilium/app/src/main/res/values'
+let g:netrw_dirhist_4='/home/russ/src/torrnado/altilium/app/src/main/kotlin/altilium'
+let g:netrw_dirhist_3='/home/russ/src/torrnado/altilium/app/src/main/res/values'
+let g:netrw_dirhist_2='/home/russ/src/torrnado/altilium/app/src/main/res'
+let g:netrw_dirhist_1='/home/russ/src/torrnado/altilium/app/src/main'
+let g:netrw_dirhist_0='/home/russ/src/torrnado/altilium/app/src'
