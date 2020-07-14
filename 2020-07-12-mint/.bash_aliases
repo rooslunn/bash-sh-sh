@@ -1,5 +1,7 @@
 alias cp="cp -R"
 alias rm="rm -r"
+alias reborn="sudo shutdown -r now"
+alias rest="sudo shutdown now"
 
 alias sos="source $HOME/.bashrc"
 alias osup="sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && clear"
