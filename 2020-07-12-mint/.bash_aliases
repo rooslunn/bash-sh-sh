@@ -65,8 +65,13 @@ alias bp42-log="torrnado 'tail -f /var/log/nginx/error.log'"
 alias ahooli="vim -S ~/.vim/sessions/ahooli.vim"
 alias altilium="vim -S ~/.vim/sessions/altilium.vim"
 
+# Paths
 if [ -d "/snap/bin" ] ; then
     PATH="/snap/bin:$PATH"
+fi
+
+if [ -d ".config/composer/vendor/bin" ] ; then
+    PATH=".config/composer/vendor/bin:$PATH"
 fi
 
 # Android
