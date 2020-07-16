@@ -43,8 +43,12 @@ alias dc-prune="docker system prune -a"
 alias dc-logs="docker-compose logs"
 alias dc-build="docker-compose build"
 
-# Laravel
-alias laranew="composer create-project laravel/laravel $1"
+# Frameworks
+alias lara="php artisan"
+alias lara-new="composer create-project laravel/laravel $1"
+alias ph="phalcon"
+alias ph-new="phalcon create-project"
+alias ph-db="vendor/bin/phalcon-migrations migration"
 
 # Android
 # adb devices
