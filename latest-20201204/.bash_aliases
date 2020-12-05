@@ -11,6 +11,7 @@ alias vpn-fozzy="sudo openvpn --config /etc/openvpn/fozzy.gw.ovpn"
 # git
 alias g="git"
 alias g-ci="git add . && git commit -m $1"
+alias g-cc="git log --format=format: --name-only | egrep -v '^$' | sort | uniq -c | sort -rg | head -10"
 
 # php
 alias serve="php -S localhost:8080"
