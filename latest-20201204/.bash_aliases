@@ -17,7 +17,11 @@ alias g-cc="git log --format=format: --name-only | egrep -v '^$' | sort | uniq -
 alias serve="php -S localhost:8080"
 
 # laravel
-alias lara-new="composer create-project --prefer-dist laravel/laravel $1"
+alias lara-new-dist="composer create-project --prefer-dist laravel/laravel $1"
+alias l-n-d="lara-new-dist"
+alias l-n-d-v6="composer create-project --prefer-dist laravel/laravel $1 \"6.*\""
+alias lara-new-inst-jet="laravel new --prompt-jetstream $1"
+alias l-n-i-j="lara-new-inst-jet"
 alias arty="php artisan"
 
 # composer
@@ -50,6 +54,9 @@ alias dc-prune="docker system prune -a"
 alias dc-logs="docker-compose logs"
 alias dc-build="docker-compose build"
 
+# PATH
+export PATH="$HOME/.config/composer/vendor/bin:$PATH"
+
 # functions
 function mkcd {
   last=$(eval "echo \$$#")
@@ -61,3 +68,4 @@ function mkcd {
     mkdir $@ && cd $last
   fi
 }
+
