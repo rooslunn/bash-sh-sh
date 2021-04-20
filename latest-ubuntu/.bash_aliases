@@ -25,6 +25,7 @@ alias c-aws-cp="scp -i ~/.ssh/id_rsa_cellardoor $1 ubuntu@ec2-52-29-206-109.eu-c
 # --- git
 alias g="git"
 alias g-ci="git add . && git commit -m $1"
+alias g-ci-pu="g-ci && g push"
 alias g-v-ci="git add . && git commit"
 alias g-cc="git log --format=format: --name-only | egrep -v '^$' | sort | uniq -c | sort -rg | head -10"
 
