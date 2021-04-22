@@ -9,6 +9,8 @@ alias inxi-all="inxi -Fxxxrz"
 alias inxi-0="inxi -Fxz"
 alias reborn="sudo shutdown -r now"
 alias soundon="pulseaudio -k"
+alias eb="vim $HOME/.bash_aliases"
+alias clr="clear"
 
 # --- APT
 alias apti="sudo apt install -y $1"
@@ -25,7 +27,7 @@ alias c-aws-cp="scp -i ~/.ssh/id_rsa_cellardoor $1 ubuntu@ec2-52-29-206-109.eu-c
 # --- git
 alias g="git"
 alias g-ci="git add . && git commit -m $1"
-alias g-ci-pu="g-ci && g push"
+alias g-ci-pu="g-ci $1 && g push"
 alias g-v-ci="git add . && git commit"
 alias g-cc="git log --format=format: --name-only | egrep -v '^$' | sort | uniq -c | sort -rg | head -10"
 
@@ -37,7 +39,7 @@ alias p="./vendor/bin/pest"
 alias y="yarn"
 
 # --- laravel
-alias arty="php artisan"
+alias a="php artisan"
 alias lara-new-dist="composer create-project --prefer-dist laravel/laravel $1"
 alias l-n-d="lara-new-dist"
 #alias l-n-d-v6="composer create-project --prefer-dist laravel/laravel $1 \"6.*\""
@@ -78,6 +80,9 @@ alias c-i="composer install"
 # --- PATH
 export PATH="$HOME/.yarn/bin:$HOME/.config/composer/vendor/bin:$PATH"
 export LESS="-N -S"
+
+# --- Use vim keybindings in cmdline
+set -o vi
 
 # functions
 function mkcd {
