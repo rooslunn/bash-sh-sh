@@ -20,5 +20,6 @@
     email = rkladko@gmail.com
 [core]
     editor = vim
+	pager = less -r
 [push]
     default = simple
