@@ -1,11 +1,15 @@
 # --- system
 alias clr="tput reset"
-alias sos="source $HOME/.bashrc && clr"
+alias sos="source $HOME/.bashrc"
 alias osup="sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && sudo snap refresh"
 alias cp="cp -R"
 alias rm="rm -r"
+
 alias cdc="cd $HOME/src/mirage/h5"
 alias cds="cd $HOME/src"
+alias cdr="cd $HOME/src/roos"
+alias cda="cd $HOME/AndroidStudioProjects"
+
 alias inxi-all="inxi -Fxxxrz"
 alias inxi-0="inxi -Fxz"
 alias reborn="sudo shutdown -r now"
@@ -26,10 +30,17 @@ alias c-aws-cp="scp -i ~/.ssh/id_rsa_cellardoor $1 ubuntu@ec2-52-29-206-109.eu-c
 
 # --- git
 alias g="git"
-alias g-ci="git add . && git commit -m $1"
-alias g-ci-poo="git add . && git ci -m $1 && git push"
-alias g-v-ci="git add . && git commit"
+alias g-c="git add . && git commit -m $1"
+alias g-p="git push"
+function g-c-p() {
+    (git add .) && (git ci -m "$1") && (git push)
+}
+function g-cv-p() {
+    (git add .) && (git ci) && (git push)
+}
+alias g-v-c="git add . && git commit"
 alias g-cc="git log --format=format: --name-only | egrep -v '^$' | sort | uniq -c | sort -rg | head -10"
+alias g-fix-ignore="git rm -r --cached . && git add . && git commit -m 'gitignore fixed untracked files'"
 
 # --- php
 alias serve="php -S localhost:8080"
@@ -82,12 +93,16 @@ alias t="terraform"
 #alias dc-logs="docker-compose logs"
 #alias dc-build="docker-compose build"
 
+# Java hujava
+JAVA_HOME=""/usr/lib/jvm/jdk-16.0.1/""
+
 # --- PATH
-export PATH="$HOME/.yarn/bin:$HOME/.config/composer/vendor/bin:/usr/local/go/bin:$HOME/go/bin:$PATH"
+export PATH="$JAVA_HOME/bin:$HOME/.yarn/bin:$HOME/.config/composer/vendor/bin:/usr/local/go/bin:$HOME/go/bin:$PATH"
 export LESS="-N -S"
+export JAVA_HOME
 
 # --- Use vim keybindings in cmdline
-set -o vi
+#set -o vi
 
 # functions
 function mkcd {
